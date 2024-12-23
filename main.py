@@ -51,7 +51,7 @@ async def lead(request: Request):
                 params_dict['random_num'],
                 None,
                 None,
-                params_dict['client_campaign_id']
+                params_dict['campaign_client_id']
         ):
             print("Success add action")
         else:
