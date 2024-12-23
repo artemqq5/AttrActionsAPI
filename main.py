@@ -57,6 +57,9 @@ async def lead(request: Request):
         else:
             print("Fail add action")
 
+        if create_lead_response['status'] == 'error':
+            return JSONResponse(status_code=400, content={"status": "error", "message": "Action wasn`t send"})
+
         return JSONResponse(status_code=200, content={"status": "success"})
     except Exception as e:
         print(f"Error lead: {e}")
@@ -96,6 +99,9 @@ async def complete_registration(request: Request):
         else:
             print("Fail add action")
 
+        if create_lead_response['status'] == 'error':
+            return JSONResponse(status_code=400, content={"status": "error", "message": "Action wasn`t send"})
+
         return JSONResponse(status_code=200, content={"status": "success"})
     except Exception as e:
         print(f"Error lead: {e}")
@@ -134,6 +140,9 @@ async def purchase(request: Request):
             print("Success add action")
         else:
             print("Fail add action")
+
+        if create_lead_response['status'] == 'error':
+            return JSONResponse(status_code=400, content={"status": "error", "message": "Action wasn`t send"})
 
         return JSONResponse(status_code=200, content={"status": "success"})
     except Exception as e:
