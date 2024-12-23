@@ -24,7 +24,7 @@ app.add_middleware(
 )
 
 
-@app.post("/lead")
+@app.post("/v1/action/lead")
 async def lead(request: Request):
     try:
         query_params = request.query_params
@@ -63,7 +63,7 @@ async def lead(request: Request):
         return JSONResponse(status_code=500, content={"status": "error", "message": "Internal server error"})
 
 
-@app.post("/complete_registration")
+@app.post("/v1/action/complete_registration")
 async def complete_registration(request: Request):
     try:
         query_params = request.query_params
@@ -102,7 +102,7 @@ async def complete_registration(request: Request):
         return JSONResponse(status_code=500, content={"status": "error", "message": "Internal server error"})
 
 
-@app.post("/purchase")
+@app.post("/v1/action/purchase")
 async def purchase(request: Request):
     try:
         query_params = request.query_params
