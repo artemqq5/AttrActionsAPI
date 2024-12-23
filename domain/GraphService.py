@@ -8,11 +8,11 @@ class GraphService(GraphAPI):
     def proccess_action(self, event, args):
         try:
             if event == "CompleteRegistration":
-                response = self._complete_registration(**args)
+                response = self._complete_registration(args)
             elif event == "Purchase":
-                response = self._purchase(**args)
+                response = self._purchase(args)
             else:
-                response = self._lead(**args)
+                response = self._lead(args)
 
             response_data = response.json()  # Перетворюємо відповідь у JSON
 

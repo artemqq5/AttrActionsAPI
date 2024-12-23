@@ -24,7 +24,7 @@ app.add_middleware(
 )
 
 
-@app.get("/lead")
+@app.post("/lead")
 async def lead(request: Request):
     try:
         query_params = request.query_params
@@ -50,7 +50,8 @@ async def lead(request: Request):
                 params_dict['event_id'],
                 params_dict['random_num'],
                 None,
-                None
+                None,
+                params_dict['client_campaign_id']
         ):
             print("Success add action")
         else:
@@ -62,7 +63,7 @@ async def lead(request: Request):
         return JSONResponse(status_code=500, content={"status": "error", "message": "Internal server error"})
 
 
-@app.get("/complete_registration")
+@app.post("/complete_registration")
 async def complete_registration(request: Request):
     try:
         query_params = request.query_params
@@ -88,7 +89,8 @@ async def complete_registration(request: Request):
                 params_dict['event_id'],
                 params_dict['random_num'],
                 None,
-                None
+                None,
+                params_dict['campaign_client_id']
         ):
             print("Success add action")
         else:
@@ -100,7 +102,7 @@ async def complete_registration(request: Request):
         return JSONResponse(status_code=500, content={"status": "error", "message": "Internal server error"})
 
 
-@app.get("/purchase")
+@app.post("/purchase")
 async def purchase(request: Request):
     try:
         query_params = request.query_params
@@ -126,7 +128,8 @@ async def purchase(request: Request):
                 params_dict['event_id'],
                 params_dict['random_num'],
                 'USDT',
-                params_dict['amount_value']
+                params_dict['amount_value'],
+                params_dict['campaign_client_id']
         ):
             print("Success add action")
         else:
