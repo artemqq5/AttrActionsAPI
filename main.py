@@ -29,7 +29,7 @@ async def lead(request: Request):
     try:
         query_params = request.query_params
         params_dict = {key: value for key, value in query_params.items()}
-        print("\n\n")
+        print(f"\n{time.time()}\n")
         print(params_dict)
 
         params_dict['event_time'] = int(time.time())
@@ -72,7 +72,7 @@ async def complete_registration(request: Request):
     try:
         query_params = request.query_params
         params_dict = {key: value for key, value in query_params.items()}
-        print("\n\n")
+        print(f"\n{time.time()}\n")
         print(params_dict)
 
         params_dict['event_time'] = int(time.time())
@@ -115,7 +115,7 @@ async def purchase(request: Request):
     try:
         query_params = request.query_params
         params_dict = {key: value for key, value in query_params.items()}
-        print("\n\n")
+        print(f"\n{time.time()}\n")
         print(params_dict)
 
         params_dict['event_time'] = int(time.time())
