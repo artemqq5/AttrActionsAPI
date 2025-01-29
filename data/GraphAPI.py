@@ -1,11 +1,15 @@
 import json
+import logging
 
 import requests
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 class GraphAPI:
     def __init__(self):
         self.__headers = {'Content-Type': 'application/json'}
+        self.logger = logging.getLogger("FacebookAPI")
 
     def _lead(self, args):
         url = f"https://graph.facebook.com/v21.0/{args['pixel']}/events?access_token={args['token']}"
@@ -27,7 +31,19 @@ class GraphAPI:
             ]
         })
 
-        return requests.request("POST", url, headers=self.__headers, data=payload)
+        # Логування URL, заголовків та тіла запиту
+        self.logger.info(f"Sending POST request to: {url}")
+        self.logger.info(f"Headers: {json.dumps(self.__headers, indent=2)}")
+        self.logger.info(f"Payload: {payload}")
+
+        # Відправка запиту
+        response = requests.post(url, headers=self.__headers, data=payload)
+
+        # Логування відповіді сервера
+        self.logger.info(f"Response Code: {response.status_code}")
+        self.logger.info(f"Response Body: {response.text}")
+
+        return response
 
     def _complete_registration(self, args: dict[str]):
         url = f"https://graph.facebook.com/v21.0/{args['pixel']}/events?access_token={args['token']}"
@@ -49,7 +65,19 @@ class GraphAPI:
             ]
         })
 
-        return requests.request("POST", url, headers=self.__headers, data=payload)
+        # Логування URL, заголовків та тіла запиту
+        self.logger.info(f"Sending POST request to: {url}")
+        self.logger.info(f"Headers: {json.dumps(self.__headers, indent=2)}")
+        self.logger.info(f"Payload: {payload}")
+
+        # Відправка запиту
+        response = requests.post(url, headers=self.__headers, data=payload)
+
+        # Логування відповіді сервера
+        self.logger.info(f"Response Code: {response.status_code}")
+        self.logger.info(f"Response Body: {response.text}")
+
+        return response
 
     def _purchase(self, args):
         url = f"https://graph.facebook.com/v21.0/{args['pixel']}/events?access_token={args['token']}"
@@ -75,4 +103,16 @@ class GraphAPI:
             ]
         })
 
-        return requests.request("POST", url, headers=self.__headers, data=payload)
+        # Логування URL, заголовків та тіла запиту
+        self.logger.info(f"Sending POST request to: {url}")
+        self.logger.info(f"Headers: {json.dumps(self.__headers, indent=2)}")
+        self.logger.info(f"Payload: {payload}")
+
+        # Відправка запиту
+        response = requests.post(url, headers=self.__headers, data=payload)
+
+        # Логування відповіді сервера
+        self.logger.info(f"Response Code: {response.status_code}")
+        self.logger.info(f"Response Body: {response.text}")
+
+        return response
